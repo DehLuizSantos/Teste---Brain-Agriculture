@@ -25,6 +25,8 @@ export const NavbarWrapper = styled.div<NavbarWrapperProps>`
 export const NavbarHeader = styled.div`
   ${() => css`
     padding: 5px;
+    border: 1px solid red;
+    margin: 15px 0;
     display: flex;
     justify-content: center;
     gap: 10px;

@@ -2,10 +2,11 @@ import { useState, memo, useMemo, useEffect } from 'react';
 import { Collapse } from '@mantine/core';
 import { FaArrowRight } from 'react-icons/fa';
 import * as S from './styles';
+import { IconType } from 'react-icons';
 
 export type LinkNavbarProps = {
   navHoverIsOpen: boolean;
-  icon: string;
+  icon: any;
   label: string;
   initiallyOpened?: boolean;
   to?: string;
@@ -26,7 +27,7 @@ const LinkNavbar = ({
 
   const items = useMemo(() => {
     if (hasLinks) {
-      return linksExpand.map((link) => (
+      return linksExpand?.map((link) => (
         <S.Links
           to={link.to}
           key={link.label}
@@ -61,11 +62,8 @@ const LinkNavbar = ({
         }}
       >
         <S.LinkWrapper data-active={navHoverIsOpen}>
-          <S.LinkSvg data-active={navHoverIsOpen}>
-            {/* <Icone fill={theme.colors.blue} width={25} height={25} svg={icon} /> */}
-            <p>Icone</p>
-          </S.LinkSvg>
-          <p>{label}</p>
+          <S.LinkSvg data-active={navHoverIsOpen}>{icon}</S.LinkSvg>
+          {navHoverIsOpen && <p>{label}</p>}
         </S.LinkWrapper>
 
         {hasLinks && (

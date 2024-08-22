@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ConchaAplicacao } from '.';
+import { Shell } from '.';
 import { LinksDinamicosMock } from '../Navbar/mocks';
 
-const meta: Meta<typeof ConchaAplicacao> = {
-  component: ConchaAplicacao,
+const meta: Meta<typeof Shell> = {
+  component: Shell,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ConchaAplicacao>;
+type Story = StoryObj<typeof Shell>;
 
 export const Primary: Story = {
   args: {

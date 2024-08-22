@@ -5,6 +5,8 @@ export const LinksControl = styled(Link)`
   ${({ theme }) => css`
     font-weight: 500;
     display: flex;
+    border: 1px solid red;
+
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -31,7 +33,6 @@ export const LinkWrapper = styled.div`
 
     p {
       font-size: ${theme.sizes.small};
-      font-weight: 400;
       color: ${theme.colors.white};
       white-space: nowrap;
       width: 100%;
@@ -52,10 +53,6 @@ export const LinkWrapper = styled.div`
         margin-left: 10px;
         color: ${theme.colors.blue};
       }
-
-      svg image {
-        fill: ${theme.colors.blue};
-      }
     }
   `}
 `;
@@ -69,9 +66,8 @@ export const LinkSvg = styled.div`
     justify-content: center;
 
     svg {
-      image {
-        fill: ${theme.colors.blue};
-      }
+      fill: ${theme.colors.blue};
+      font-size: ${theme.sizes.xxLarge};
     }
 
     &[data-active='true'] {

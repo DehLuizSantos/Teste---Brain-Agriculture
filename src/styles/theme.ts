@@ -37,7 +37,8 @@ export const fontSizes = {
   meddium: pxToRem(14),
   large: pxToRem(16),
   xLarge: pxToRem(18),
-  xxLarge: pxToRem(32),
+  xxLarge: pxToRem(26),
+  xxxLarge: pxToRem(32),
 };
 export const responsive = {
   sm: '576px',

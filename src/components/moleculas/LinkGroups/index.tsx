@@ -2,12 +2,13 @@ import React, { memo, useState } from 'react';
 import * as S from './styles';
 import LinkNavbar from '@/components/atomos/LinkNavbar';
 import { FadingComponent } from '@/components/atomos/FadeAnimation';
+import { IconType } from 'react-icons';
 
 export interface LinksProps {
   label: string;
   active?: boolean;
   to?: string;
-  icon: string;
+  icon: any;
   linksExpand?: { label: string; to: string }[];
 }
 interface GrupoDeLinksProps {

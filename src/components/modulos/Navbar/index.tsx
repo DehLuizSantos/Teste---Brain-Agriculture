@@ -1,9 +1,5 @@
 import * as S from './styles';
 import IconButton from '../../atomos/IconButton';
-// import NavbarTituloHeader from '../../atomos/NavbarTituloHeader';
-import CiclosEncerrados from '../../../assets/imagens/icons/CiclosEncerrados.svg';
-import Logo from '../../../assets/imagens/novos-icones/STI_nomeCor.svg';
-import LogoInitial from '../../../assets/imagens/novos-icones/STI_iconeBranco.svg';
 import { useMemo } from 'react';
 import { theme } from '@/styles/theme';
 import LinkGroups, { LinksProps } from '@/components/moleculas/LinkGroups';
@@ -15,7 +11,7 @@ export type NavbarType = {
   links?: LinksProps[];
 };
 const Navbar = ({ isHover, links, modulo }: NavbarType) => {
-  const LogoHeader = useMemo(() => (isHover ? Logo : LogoInitial), [isHover]);
+  const LogoHeader = useMemo(() => (isHover ? <p>Logo</p> : <p>Logo Inicial</p>), [isHover]);
 
   return (
     <S.NavbarWrapper
@@ -24,7 +20,7 @@ const Navbar = ({ isHover, links, modulo }: NavbarType) => {
       color={isHover ? theme.colors.white : theme.colors.blue}
     >
       <S.NavbarHeader className={isHover ? 'nav-hover' : ''}>
-        <p>Icone</p>
+        {LogoHeader}
 
         <IconButton
           tipo="round"
@@ -58,7 +54,7 @@ const Navbar = ({ isHover, links, modulo }: NavbarType) => {
           ultimaAtt="dez 2023."
           versao={'10.876.23'}
         /> */}
-        <p>Versão</p>
+        <p>Footer</p>
       </S.NavbarFooter>
     </S.NavbarWrapper>
   );

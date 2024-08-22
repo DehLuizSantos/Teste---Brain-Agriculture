@@ -6,25 +6,16 @@ import Header from '../Header';
 import { useLocation } from 'react-router-dom';
 import { LinksProps } from '@/components/moleculas/LinkGroups';
 
-type ConchaAplicacaolType = {
+type ShellType = {
   children: React.ReactNode;
   links?: LinksProps[];
   modulo: string;
   isNavHover: boolean;
   navbarRef?: React.RefObject<HTMLDivElement>;
 };
-export function ConchaAplicacao({
-  children,
-  modulo,
-  isNavHover,
-  links,
-  navbarRef,
-}: ConchaAplicacaolType) {
-  const rotaAcessada = useLocation();
-  const paginaAtual = rotaAcessada.pathname.replace('/', '');
-
+export function Shell({ children, modulo, isNavHover, links, navbarRef }: ShellType) {
   return (
-    <S.ConchaAplicacaoWrapper
+    <S.ShellWrapper
       data-testid="app-shell-wrapper"
       navbar={{
         width: isNavHover ? 280 : 80,
@@ -34,15 +25,15 @@ export function ConchaAplicacao({
       transitionTimingFunction="ease-in"
       transitionDuration={3}
     >
-      <S.ConchaAplicacaoNavbarWrapper ref={navbarRef} data-active={isNavHover}>
+      <S.ShellNavbarWrapper ref={navbarRef} data-active={isNavHover}>
         <Navbar modulo={modulo} isHover={isNavHover} links={links} />
-      </S.ConchaAplicacaoNavbarWrapper>
-      <S.ConchaAplicacaoMainWrapper>
+      </S.ShellNavbarWrapper>
+      <S.ShellMainWrapper>
         <Container fluid>
-          {paginaAtual.length > 0 && <Header />}
+          <Header />
           {children}
         </Container>
-      </S.ConchaAplicacaoMainWrapper>
-    </S.ConchaAplicacaoWrapper>
+      </S.ShellMainWrapper>
+    </S.ShellWrapper>
   );
 }
