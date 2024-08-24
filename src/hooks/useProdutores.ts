@@ -5,9 +5,10 @@ import produtores from '@/API/produtor';
 import { useStore } from 'zustand';
 import { useprodutoresStore } from '@/store/produtores/produtores-store-creator';
 import { useLoadingCreator } from '@/store/loading/use-loading-store';
+import { ProdutorType } from '@/interfaces/produtores';
 
 export const useProdutores = () => {
-  const { produtores, deleteProdutor } = useStore(useprodutoresStore);
+  const { produtores, deleteProdutor, addProdutor, editProdutor } = useStore(useprodutoresStore);
   const { setLoading } = useStore(useLoadingCreator);
 
   const handleGetAllProdutores = (): Promise<typeof produtores> => {
@@ -25,14 +26,21 @@ export const useProdutores = () => {
     return produtores;
   };
 
-  /* const queryClient = useQueryClient();
-  const handleLogout = () => {
-    store.session.set('nome', '');
-    store.session.set('adm', '');
-    store.session.set('email', '');
-    store.session.set('id', '');
-    queryClient.setQueryData(['userData'], undefined);
-  }; */
+  const handlePostProdutor = async (produtor: ProdutorType) => {
+    const uuid = Math.floor(Math.random() * 1001); // Gera um número inteiro entre 0 e 1000
 
-  return { handleGetAllProdutores, handleDeleteProdutor };
+    const body = {
+      ...produtor,
+      id: uuid,
+    };
+
+    addProdutor(body);
+    return produtores;
+  };
+  const handlePutProdutor = async (id: number | null, produtor: ProdutorType) => {
+    editProdutor(id, produtor);
+    return produtores;
+  };
+
+  return { handleGetAllProdutores, handleDeleteProdutor, handlePostProdutor, handlePutProdutor };
 };

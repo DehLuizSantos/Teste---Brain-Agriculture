@@ -42,6 +42,22 @@ function getRandomCulturas(): Culturas[] {
   return culturas;
 }
 
+function generateCPF(): string {
+  const num = () => getRandomInt(100, 999);
+  const last = () => getRandomInt(10, 99);
+  return `${num()}.${num()}.${num()}-${last()}`;
+}
+
+function generateCNPJ(): string {
+  const num = () => getRandomInt(1000, 9999);
+  const last = () => getRandomInt(100, 999);
+  return `${num()}.${num()}.${num()}/0001-${last()}`;
+}
+
+function getRandomDocumento(): string {
+  return Math.random() > 0.5 ? generateCPF() : generateCNPJ();
+}
+
 const produtores = Array.from({ length: 81 }, () => {
   const nomeProdutor = nomesProdutores[getRandomInt(0, nomesProdutores.length - 1)];
   const nomeFazenda = nomesFazendas[getRandomInt(0, nomesFazendas.length - 1)];
@@ -49,6 +65,7 @@ const produtores = Array.from({ length: 81 }, () => {
   const areaAgricultavel = getRandomInt(200, totalHectares);
   const areaVegetacao = totalHectares - areaAgricultavel;
   const produtorId = getRandomInt(1, 1000);
+  const documento = getRandomDocumento();
 
   return {
     nomeProdutor,
@@ -58,6 +75,7 @@ const produtores = Array.from({ length: 81 }, () => {
     areaVegetacao,
     culturasPlantadas: getRandomCulturas(),
     id: produtorId,
+    documento,
   };
 });
 

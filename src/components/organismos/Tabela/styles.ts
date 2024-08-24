@@ -9,11 +9,10 @@ export const ActionIconsWrapper = styled.div`
 `;
 
 export const TableContainer = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     margin: 15px 0;
     width: 100%;
     border-radius: 4px;
-    /* box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 8px; */
 
     .mantine-Select-label {
       display: none;

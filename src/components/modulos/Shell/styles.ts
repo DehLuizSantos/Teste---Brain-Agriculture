@@ -22,7 +22,7 @@ export const ShellNavbarWrapper = styled(AppShell.Navbar)`
 `;
 export const ShellMainWrapper = styled(AppShell.Main)`
   ${() => css`
-    max-width: 1400px;
+    max-width: 1550px;
   `}
 `;
 
