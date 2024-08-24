@@ -12,10 +12,10 @@ export const InputCnpj = ({ form, focus }: InputCnpjProps) => {
   return (
     <TextInput
       data-autofocus={focus}
-      {...form.getInputProps('cnpj')}
-      value={CnpjMaskedTextField(form.getInputProps('cnpj')?.value)}
+      {...form.getInputProps('documento')}
+      value={CnpjMaskedTextField(form.getInputProps('documento')?.value)}
       onChange={(event) =>
-        form.setFieldValue('cnpj', removeAllEspetialCaracters(event.target.value))
+        form.setFieldValue('documento', removeAllEspetialCaracters(event.target.value))
       }
       label={'CNPJ'}
       maxLength={18}

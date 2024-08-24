@@ -5,7 +5,7 @@ export const LogoutButtonWrapper = styled.div`
   ${() => css``}
 `;
 
-export const LoginButton = styled.div`
+export const LoginButton = styled.button`
   ${({ theme }) => css`
     display: flex;
     align-items: center;

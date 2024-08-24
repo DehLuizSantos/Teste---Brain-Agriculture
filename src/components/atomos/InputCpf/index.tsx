@@ -12,10 +12,10 @@ export const Inputcpf = ({ form, focus }: InputcpfProps) => {
   return (
     <TextInput
       data-autofocus={focus}
-      {...form.getInputProps('cpf')}
-      value={CpfMasketTextField(form.getInputProps('cpf')?.value)}
+      {...form.getInputProps('documento')}
+      value={CpfMasketTextField(form.getInputProps('documento')?.value)}
       onChange={(event) =>
-        form.setFieldValue('cpf', removeAllEspetialCaracters(event.target.value))
+        form.setFieldValue('documento', removeAllEspetialCaracters(event.target.value))
       }
       label={'CPF'}
       maxLength={14}

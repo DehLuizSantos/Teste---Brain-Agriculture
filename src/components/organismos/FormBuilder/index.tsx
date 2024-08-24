@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Checkbox,
   Grid,
+  MultiSelect,
   NumberInput,
   PasswordInput,
   Select,
@@ -171,6 +172,20 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCan
       return (
         <Grid.Col span={col} key={name}>
           <Inputcpf form={form} focus={focus} />
+        </Grid.Col>
+      );
+    }
+
+    if (type === 'culturasPlantadas') {
+      return (
+        <Grid.Col span={col} key={name}>
+          <MultiSelect
+            data-autofocus={focus}
+            label={label}
+            withAsterisk={required}
+            {...form.getInputProps(name)}
+            data={['Soja', 'Milho', 'Algodão', 'Café', 'Cana de Açucar']}
+          />
         </Grid.Col>
       );
     }
