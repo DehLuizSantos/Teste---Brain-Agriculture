@@ -1,9 +1,11 @@
 import * as S from './styles';
 import { useLocation } from 'react-router-dom';
 import { LogoutButton } from '@/components/atomos/LoginButton';
+import { VscDashboard } from 'react-icons/vsc';
+import { PiPlantLight } from 'react-icons/pi';
 
 type HeaderOption = {
-  icon: string;
+  icon: JSX.Element;
   titulo: string;
   subTitulo: string;
   info: string;
@@ -18,9 +20,16 @@ const Header = () => {
   const paginaAtual = rotaAcessada.pathname.replace('/', '');
   const HeaderInfos = (info: string) => {
     const HeaderOptions: HeaderOptions = {
-      usuarios: {
-        icon: 'usuario',
-        titulo: 'Usuários',
+      dashboard: {
+        icon: <VscDashboard />,
+        titulo: 'Dashboard',
+        subTitulo:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        info: 'Cadastre, edite, delete, ou consulte os usuários que iram poder acessar o sistema.',
+      },
+      produtor: {
+        icon: <PiPlantLight />,
+        titulo: 'Produtor',
         subTitulo:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         info: 'Cadastre, edite, delete, ou consulte os usuários que iram poder acessar o sistema.',
@@ -29,11 +38,11 @@ const Header = () => {
 
     return (
       HeaderOptions[info] ?? {
-        icon: 'usuario',
-        titulo: 'BoasVindas',
+        icon: <VscDashboard />,
+        titulo: 'Dashboard',
         subTitulo:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        info: 'Cadastre, edite, delete, ou consulte os desdorbramentos de sua venda.',
+        info: 'Cadastre, edite, delete, ou consulte os usuários que iram poder acessar o sistema.',
       }
     );
   };

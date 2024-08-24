@@ -1,55 +1,46 @@
 import styled, { css } from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-bottom: 35px;
-  position: relative;
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 35px;
+  `}
 `;
 
 export const HeaderInfoWrapper = styled.div`
   ${({ theme }) => css`
     display: block;
 
-    @media (min-width: ${theme.responsive.md}) {
+    @media (min-width: ${theme.breakpoints.md}) {
       display: flex;
     }
 
     align-items: center;
     gap: 15px;
 
-    .icon-wrapper {
-      width: 55px;
-      height: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      background-color: ${theme.colors.blue};
-    }
-
     .info-wrapper {
       max-width: 672px;
 
       h1 {
         font-size: ${theme.sizes.large};
-        color: ${theme.colors.blue};
-        margin: 15px 0;
+        color: ${theme.colors.blackSec};
+        margin-bottom: 15px;
 
-        @media (min-width: ${theme.responsive.md}) {
+        @media (min-width: ${theme.breakpoints.md}) {
           margin-bottom: 5px;
         }
       }
 
       p {
         font-size: ${theme.sizes.small};
-        color: ${theme.colors.black};
+        color: ${theme.colors.gray['700']};
         margin-bottom: 15px;
 
-        @media (min-width: ${theme.responsive.md}) {
+        @media (min-width: ${theme.breakpoints.md}) {
           margin-bottom: 0;
         }
       }

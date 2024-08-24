@@ -5,11 +5,11 @@ export const LogoutButtonWrapper = styled.div`
   ${() => css``}
 `;
 
-export const LoginButton = styled.button`
+export const LoginButton = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    background-color: ${theme.colors.blue};
+    background-color: ${theme.colors.gray['700']};
     border: none;
     cursor: pointer;
     padding: 5px;

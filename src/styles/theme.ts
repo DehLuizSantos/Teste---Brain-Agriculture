@@ -22,7 +22,6 @@ export const stiColors = {
 };
 export const firstColors = {
   blackSec: '#231F20',
-  yellowWca: '#FFCB05',
 };
 export const secColors = {
   orangeSec: '#E96C2D',
@@ -39,11 +38,13 @@ export const fontSizes = {
   xxLarge: pxToRem(26),
   xxxLarge: pxToRem(32),
 };
-export const responsive = {
-  sm: '576px',
-  md: '768px',
-  lg: '992px',
-  xl: '1200px',
+export const breakpoints = {
+  sl: '1440',
+  xl: '1200',
+  lg: '992',
+  md: '768',
+  sm: '576',
+  xs: '350',
 };
 
 export const theme = {
@@ -56,7 +57,7 @@ export const theme = {
   sizes: {
     ...fontSizes,
   },
-  responsive: { ...responsive },
+  breakpoints: { ...breakpoints },
 };
 
 export type ThemeType = typeof theme;
