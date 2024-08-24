@@ -22,12 +22,22 @@
     "@emotion/react": "^11.13.0",
     "@mantine/core": "^7.12.1",
     "@mantine/dates": "^7.12.1",
+    "@mantine/form": "^7.12.1",
     "@mantine/hooks": "^7.12.1",
+    "@mantine/notifications": "^7.12.1",
     "@tabler/icons-react": "^3.12.0",
+    "@tanstack/query-sync-storage-persister": "^5.52.0",
+    "@tanstack/react-query": "^5.52.0",
+    "@tanstack/react-query-persist-client": "^5.52.0",
     "dayjs": "^1.11.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1"
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.23.1",
+    "store2": "^2.14.3",
+    "styled-components": "^6.1.12",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.1.10",
