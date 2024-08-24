@@ -8,6 +8,7 @@ import { GlobalStyles } from './styles/global';
 import { theme } from './styles/theme';
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
+import 'mantine-react-table/styles.css'; //import MRT styles
 
 function App() {
   const persister = createSyncStoragePersister({
