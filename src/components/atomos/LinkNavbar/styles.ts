@@ -5,8 +5,6 @@ export const LinksControl = styled(Link)`
   ${({ theme }) => css`
     font-weight: 500;
     display: flex;
-    border: 1px solid red;
-
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -83,12 +81,12 @@ export const Links = styled(Link)`
     text-decoration: auto;
     font-size: ${theme.sizes.meddium};
     font-weight: 400;
-    color: ${theme.colors.blackSti};
+    color: ${theme.colors.black};
     margin-left: 20px;
     border-left: 2px solid #c2dff9;
     border-bottom: 2px solid #c2dff9;
     text-align: start;
-    color: ${theme.colors.blackWca};
+    color: ${theme.colors.black};
     background-color: ${theme.colors.white};
 
     &:hover {

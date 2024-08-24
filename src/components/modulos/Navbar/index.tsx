@@ -4,6 +4,8 @@ import { useMemo } from 'react';
 import { theme } from '@/styles/theme';
 import LinkGroups, { LinksProps } from '@/components/moleculas/LinkGroups';
 import { FadingComponent } from '@/components/atomos/FadeAnimation';
+import LogoInicial from '../../../assets/Logo';
+import Logo from '../../../assets/LogoBA';
 
 export type NavbarType = {
   isHover: boolean;
@@ -11,7 +13,7 @@ export type NavbarType = {
   links?: LinksProps[];
 };
 const Navbar = ({ isHover, links, modulo }: NavbarType) => {
-  const LogoHeader = useMemo(() => (isHover ? <p>Logo</p> : <p>Logo Inicial</p>), [isHover]);
+  const LogoHeader = useMemo(() => (isHover ? <Logo /> : <LogoInicial />), [isHover]);
 
   return (
     <S.NavbarWrapper
@@ -19,43 +21,11 @@ const Navbar = ({ isHover, links, modulo }: NavbarType) => {
       data-active={isHover}
       color={isHover ? theme.colors.white : theme.colors.blue}
     >
-      <S.NavbarHeader className={isHover ? 'nav-hover' : ''}>
-        {LogoHeader}
+      <S.NavbarHeader className={isHover ? 'nav-hover' : ''}>{LogoHeader}</S.NavbarHeader>
 
-        <IconButton
-          tipo="round"
-          size={'sm'}
-          variant="transparent"
-          color="gray"
-          style={{ display: isHover ? 'block' : 'none' }}
-          className="action-icon"
-        >
-          <p>Icone Sair</p>
-        </IconButton>
-      </S.NavbarHeader>
-
-      <FadingComponent duration={600}>
-        <S.NabarBody>
-          {/* <NavbarTituloHeader isNavHover={isHover} modulo={modulo} icon={CiclosEncerrados} /> */}
-          <p>TITULO</p>
-          <LinkGroups links={links} isNavHover={isHover} />
-        </S.NabarBody>
-      </FadingComponent>
-
-      <S.NavbarFooter
-        data-active={isHover}
-        data-testid="footer-navbar"
-        style={{ width: isHover ? '280px' : '80px' }}
-      >
-        {/* <AjudaIcone tipo="navbar" isHover={isHover} /> */}
-
-        {/* <Version
-          isNavHover={isHover}
-          ultimaAtt="dez 2023."
-          versao={'10.876.23'}
-        /> */}
-        <p>Footer</p>
-      </S.NavbarFooter>
+      <S.NabarBody>
+        <LinkGroups links={links} isNavHover={isHover} />
+      </S.NabarBody>
     </S.NavbarWrapper>
   );
 };

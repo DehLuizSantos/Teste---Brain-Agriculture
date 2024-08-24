@@ -1,14 +1,31 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/Home.page';
-import { Shell } from './components/modulos/Shell';
 import Container from './components/modulos/Container';
+import { Dashboard } from './pages/Dashboard';
+import { Produtor } from './pages/Produtor';
+import { Login } from './pages/Login';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
+      <>
+        <Login />
+      </>
+    ),
+  },
+  {
+    path: '/dashboard',
+    element: (
       <Container>
-        <HomePage />
+        <Dashboard />
+      </Container>
+    ),
+  },
+  {
+    path: '/produtor',
+    element: (
+      <Container>
+        <Produtor />
       </Container>
     ),
   },

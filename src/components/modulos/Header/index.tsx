@@ -1,8 +1,6 @@
 import * as S from './styles';
-
 import { useLocation } from 'react-router-dom';
-
-import HoverPopUp from '@/components/atomos/HoverPopUp';
+import { LogoutButton } from '@/components/atomos/LoginButton';
 
 type HeaderOption = {
   icon: string;
@@ -43,20 +41,13 @@ const Header = () => {
   return (
     <S.HeaderContainer>
       <S.HeaderInfoWrapper>
-        <div className="icon-wrapper">
-          <p>Icone</p>
-        </div>
         <div className="info-wrapper">
           <h1>{HeaderInfos(paginaAtual).titulo}</h1>
           <p>{HeaderInfos(paginaAtual).subTitulo}</p>
         </div>
-
-        <HoverPopUp texto={HeaderInfos(paginaAtual).info} className="ajuda-wrapper">
-          <p>Icone 2</p>
-        </HoverPopUp>
       </S.HeaderInfoWrapper>
 
-      <p>Usuario</p>
+      <LogoutButton />
     </S.HeaderContainer>
   );
 };

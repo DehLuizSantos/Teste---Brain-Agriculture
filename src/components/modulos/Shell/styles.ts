@@ -25,3 +25,26 @@ export const ShellMainWrapper = styled(AppShell.Main)`
     max-width: 1500px;
   `}
 `;
+
+export const ShellFooter = styled.footer`
+  ${({ theme }) => css`
+    padding: 15px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    h3 {
+      font-size: ${theme.sizes.small};
+    }
+
+    h4 {
+      font-size: ${theme.sizes.xSmall};
+    }
+
+    svg {
+      /*  color: ${theme.colors.greenSec};
+      font-size: ${theme.sizes.xxxLarge}; */
+    }
+  `}
+`;

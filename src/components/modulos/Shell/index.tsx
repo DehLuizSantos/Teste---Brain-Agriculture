@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container } from '@mantine/core';
+import { AppShell, Container } from '@mantine/core';
 import * as S from './styles';
 import Navbar from '../Navbar';
 import Header from '../Header';
-import { useLocation } from 'react-router-dom';
 import { LinksProps } from '@/components/moleculas/LinkGroups';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { LogoutButton } from '@/components/atomos/LoginButton';
 
 type ShellType = {
   children: React.ReactNode;

@@ -8,7 +8,6 @@ export const commonColors = {
   success: '#03C668',
   alert: '#FFd638',
   blue: '#3532a4',
-  blueNew: 'rgba(58, 151, 237, 1)',
   red: '#DE0015',
   white: '#fff',
   gray: {
@@ -18,11 +17,11 @@ export const commonColors = {
   },
 };
 export const stiColors = {
-  blackSti: '#010002',
+  black: '#010002',
   redSti: '#911f20',
 };
-export const wcaColors = {
-  blackWca: '#231F20',
+export const firstColors = {
+  blackSec: '#231F20',
   yellowWca: '#FFCB05',
 };
 export const secColors = {
@@ -51,7 +50,7 @@ export const theme = {
   colors: {
     ...commonColors,
     ...stiColors,
-    ...wcaColors,
+    ...firstColors,
     ...secColors,
   },
   sizes: {

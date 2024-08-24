@@ -15,6 +15,7 @@ const Container = ({ children }: any) => {
     const pathFormated = path.replace('/', '');
     const modulos: any = {
       dashboard: 'Dashboard',
+      produtor: 'Produtor',
     };
     return modulos[pathFormated];
   }, []);
@@ -46,8 +47,8 @@ const Container = ({ children }: any) => {
     <Shell
       isNavHover={isNavbarHover}
       links={[
-        { icon: <VscDashboard />, label: 'Dashboard' },
-        { icon: <PiPlantLight />, label: 'Produtor' },
+        { icon: <VscDashboard />, label: 'Dashboard', to: '/dashboard' },
+        { icon: <PiPlantLight />, label: 'Produtor', to: '/produtor' },
       ]}
       modulo={changeModulosByLocation(location.pathname)}
       navbarRef={navbarRef}

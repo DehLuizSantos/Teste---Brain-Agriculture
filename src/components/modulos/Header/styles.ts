@@ -46,7 +46,7 @@ export const HeaderInfoWrapper = styled.div`
 
       p {
         font-size: ${theme.sizes.small};
-        color: ${theme.colors.blackSti};
+        color: ${theme.colors.black};
         margin-bottom: 15px;
 
         @media (min-width: ${theme.responsive.md}) {
