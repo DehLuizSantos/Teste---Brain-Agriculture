@@ -1,7 +1,13 @@
+import { DashboardInfoCard } from '@/components/atomos/DashboardInfoCard';
+import { DashboardCharts } from '@/components/moleculas/DashboardCharts';
+import DashboardInfos from '@/components/moleculas/DashboardInfos';
+
 export const Dashboard = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <DashboardInfos />
+
+      <DashboardCharts />
     </div>
   );
 };
