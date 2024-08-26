@@ -29,7 +29,7 @@
 
 👀 Demo Website
 
-👉 demo: https://brain-agriculture-debj.vercel.app/produtor
+👉 demo: https://brain-agriculture-debj.vercel.app/
 
 <h2>IMPORTANT</h2>
 <p>

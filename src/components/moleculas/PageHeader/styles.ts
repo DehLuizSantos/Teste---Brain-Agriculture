@@ -5,5 +5,6 @@ export const PageHeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
+    flex-wrap: wrap;
   `}
 `;

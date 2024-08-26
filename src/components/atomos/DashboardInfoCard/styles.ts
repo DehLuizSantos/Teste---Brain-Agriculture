@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const DashboardInfoCardWrapper = styled.div`
   ${({ theme }) => css`
-    width: 330px;
+    width: 210px;
     height: 150px;
     background: ${theme.colors.white};
     border-radius: 15px;
@@ -11,6 +11,10 @@ export const DashboardInfoCardWrapper = styled.div`
       inset 0 -3em 3em rgba(0, 0, 0, 0.1),
       0 0 0 2px ${theme.colors.gray['500']},
       0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+
+    @media (min-width: ${theme.breakpoints.md}px) {
+      width: 330px;
+    }
   `}
 `;
 export const DashboardInfoTitle = styled.div`
