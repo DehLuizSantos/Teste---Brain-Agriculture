@@ -1,34 +1,73 @@
-# Mantine Vite template
+<p align="center">
+   <a href="https://www.linkedin.com/in/andr%C3%A9-luiz-844207102/">
+      <img alt="André Luiz Santos" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+   </a>
 
-## Features
+</p>
 
-This template comes with the following features:
+<div align="center">
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Vitest](https://vitest.dev/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+<sub> Desafio Brain Agriculture | Typescript| ReactJS | Vite </sub>
 
-## npm scripts
+</div>
 
-## Build and dev scripts
+<p align="center">
+  <sub>Desafio Brain Agriculture. Built with ❤︎ by
+    <a href="https://github.com/DehLuizSantos">André Luiz Santos</a>
+  </sub>
+</p>
 
-- `dev` – start development server
-- `build` – build production version of the app
-- `preview` – locally preview production build
+<br />
+<div align="center">
+  <h1>Brain Agriculture</h1>
+</div>
 
-### Testing scripts
+<br />
+<br />
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `vitest` – runs vitest tests
-- `vitest:watch` – starts vitest watch
-- `test` – runs `vitest`, `prettier:check`, `lint` and `typecheck` scripts
+--
 
-### Other scripts
+👀 Demo Website
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+👉 demo: https://desafio-cart-sys-junior-git-develop-dehluizsantos07.vercel.app/
+
+<h2>IMPORTANT</h2>
+<p>
+  In this link, you cannot access the features related to post, delete and put. Because DB is local.
+  To work, clone the project and follow the tutorial below.
+</p>
+
+💻  Technologies
+
+This project was made using the follow technologies:
+
+- [Typescript](https://www.typescriptlang.org/)
+- [Styled-Components](https://styled-components.com/)
+- [VITE](https://vitejs.dev/guide/)
+- [Mantine](https://v6.mantine.dev/)
+- [Tanstack](https://tanstack.com/)
+- [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
+- [Zod](https://zod.dev/)
+
+👷 How to run
+
+**You need to install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) first, then:**
+
+### Install Dependencies
+
+````bash
+npm install
+
+### Run Aplication
+
+```bash
+npm run dev - start aplication on ReactJS
+npm run vitest - start united tests with vitest
+npm run storybook - start documentation with storybook
+
+````
+
+Open [http://localhost:5173/](http://localhost:5173/) with your browser to see the result.
+<br>
+
+Made with love by [André Luiz Santos](https://github.com/DehLuizSantos) 🚀
