@@ -2,13 +2,14 @@ import { TextInput } from '@mantine/core';
 import { CnpjMaskedTextField, removeAllEspetialCaracters } from '../../../utils/validates';
 import { UseFormReturnType } from '@mantine/form';
 import { ProdutorType } from '../../../interfaces/produtor.interface';
+import { MRT_RowData } from 'mantine-react-table';
 
 interface InputCnpjProps {
   form: UseFormReturnType<ProdutorType>;
   focus?: boolean;
 }
 
-export const InputCnpj = ({ form, focus }: InputCnpjProps) => {
+function InputCnpj({ form, focus }: InputCnpjProps) {
   return (
     <TextInput
       data-autofocus={focus}
@@ -19,8 +20,10 @@ export const InputCnpj = ({ form, focus }: InputCnpjProps) => {
       }
       label={'CNPJ'}
       maxLength={18}
-      error={form.getInputProps('cnpj')?.error}
+      error={form.getInputProps('documento')?.error}
       placeholder={'00.000.000/0000-00'}
     />
   );
-};
+}
+
+export default InputCnpj;

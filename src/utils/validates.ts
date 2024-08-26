@@ -1,3 +1,5 @@
+import { UseFormReturnType } from '@mantine/form';
+
 export function CnpjMaskedTextField(value: string): string {
   if (!value) {
     return '';

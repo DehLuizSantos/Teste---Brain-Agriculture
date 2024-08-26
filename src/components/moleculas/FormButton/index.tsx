@@ -3,8 +3,9 @@ import * as S from './styles';
 
 interface FormButtonProps {
   onCancel?: () => void;
+  onClick?: () => void;
 }
-export const FormButton = ({ onCancel }: FormButtonProps) => {
+export const FormButton = ({ onCancel, onClick }: FormButtonProps) => {
   return (
     <S.FormButtonContainer>
       {onCancel && (
@@ -12,7 +13,7 @@ export const FormButton = ({ onCancel }: FormButtonProps) => {
           Cancelar
         </Button>
       )}
-      <Button fullWidth type="submit">
+      <Button fullWidth onClick={onClick}>
         Confirmar
       </Button>
     </S.FormButtonContainer>

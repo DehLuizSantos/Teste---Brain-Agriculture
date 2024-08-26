@@ -2,6 +2,7 @@ import { useStore } from 'zustand';
 import { useprodutoresStore } from '@/store/produtores/produtores-store-creator';
 import { useLoadingCreator } from '@/store/loading/use-loading-store';
 import { ProdutorType } from '@/interfaces/produtores';
+import { validateCnpj } from '@/utils/validates';
 
 export const useProdutores = () => {
   const { produtores, deleteProdutor, addProdutor, editProdutor } = useStore(useprodutoresStore);
@@ -13,7 +14,7 @@ export const useProdutores = () => {
       setTimeout(() => {
         resolve(produtores);
         setLoading(false);
-      }, 800);
+      }, 0);
     });
   };
 

@@ -1,3 +1,4 @@
+import { validateCnpj, validateCpf } from '@/utils/validates';
 import z from 'zod';
 
 type Culturas = 'Soja' | 'Milho' | 'Algodão' | 'Café' | 'Cana de Açucar';
@@ -16,7 +17,7 @@ export const produtoresInitialValues = {
 export const produtoresSchema = z.object({
   id: z.number().nullable(),
   nomeProdutor: z.string(),
-  documento: z.nullable(z.string()),
+  documento: z.string().min(1, { message: 'O documento é obrigatório' }),
   nomeFazenda: z.string(),
   totalHectares: z.number().min(1, { message: 'Total de hectares deve ser maior que 0' }),
   areaAgricultavel: z.number().min(0, { message: 'Área agricultável deve ser maior ou igual a 0' }),

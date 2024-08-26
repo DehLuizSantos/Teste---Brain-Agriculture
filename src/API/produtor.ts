@@ -1,6 +1,6 @@
 type Culturas = 'Soja' | 'Milho' | 'Algodão' | 'Café' | 'Cana de Açucar';
 type Estados = 'SP' | 'RJ' | 'MG' | 'PR' | 'RS';
-type CidadesPorEstado = Record<Estados, string[]>;
+type CidadesPorEstado = { [key: string]: string[] };
 
 export const estadosECidades: CidadesPorEstado = {
   SP: ['São Paulo', 'Campinas', 'Santos', 'Ribeirão Preto', 'Sorocaba'],

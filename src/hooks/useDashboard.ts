@@ -16,7 +16,7 @@ export const useDashboard = () => {
       setTimeout(() => {
         resolve(dashboardData);
         setLoading(false);
-      }, 800);
+      }, 0);
     });
   };
 

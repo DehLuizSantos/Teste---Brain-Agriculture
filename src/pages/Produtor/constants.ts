@@ -3,7 +3,7 @@ import { Field } from '@/components/organismos/FormBuilder';
 export const formBuildPropsFisical: Field[] = [
   { col: 12, label: 'Cpf', name: 'documento', type: 'cpf', focus: true },
   { col: 6, label: 'Nome', name: 'nomeProdutor', type: 'text' },
-  { col: 6, label: 'Nome Da Fazenda', name: 'nomeFazenda', type: 'text' },
+  { col: 6, label: 'Nome Da Fazenda', name: 'nomeFazenda', type: 'fazenda' },
   { col: 6, label: 'Estado', name: 'estado', type: 'estado' },
   { col: 6, label: 'Cidade', name: 'cidade', type: 'cidade' },
   {
@@ -19,7 +19,7 @@ export const formBuildPropsFisical: Field[] = [
 export const formBuildPropsJuridical: Field[] = [
   { col: 12, label: 'Cnpj', name: 'documento', type: 'cnpj', focus: true },
   { col: 6, label: 'Nome', name: 'nomeProdutor', type: 'text' },
-  { col: 6, label: 'Nome Da Fazenda', name: 'nomeFazenda', type: 'text' },
+  { col: 6, label: 'Nome Da Fazenda', name: 'nomeFazenda', type: 'fazenda' },
   { col: 6, label: 'Estado', name: 'estado', type: 'estado' },
   { col: 6, label: 'Cidade', name: 'cidade', type: 'cidade' },
   {

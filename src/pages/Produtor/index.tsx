@@ -9,13 +9,14 @@ import { useProdutores } from '@/hooks/useProdutores';
 import { produtoresInitialValues, produtoresSchema, ProdutorType } from '@/interfaces/produtores';
 import { useLoadingCreator } from '@/store/loading/use-loading-store';
 import { Group, Radio } from '@mantine/core';
-import { useForm, zodResolver } from '@mantine/form';
+import { useForm, UseFormReturnType, zodResolver } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { MRT_ColumnDef } from 'mantine-react-table';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useStore } from 'zustand';
 import { formBuildPropsFisical, formBuildPropsJuridical } from './constants';
+import { validateCnpj, validateCpf } from '@/utils/validates';
 
 export const Produtor = () => {
   const { handleGetAllProdutores, handleDeleteProdutor, handlePostProdutor, handlePutProdutor } =
@@ -76,7 +77,26 @@ export const Produtor = () => {
   const form = useForm<ProdutorType>({
     mode: 'controlled',
     initialValues: produtoresInitialValues,
-    validate: zodResolver(produtoresSchema),
+    validate: {
+      areaAgricultavel: (value) => (value === 0 ? 'O valor não pode ser 0' : null),
+      areaVegetacao: (value) => (value === 0 ? 'O valor não pode ser 0' : null),
+      totalHectares: (value, values) =>
+        values.areaAgricultavel + values.areaVegetacao > value || value === 0
+          ? 'A soma de área agrícultável e vegetação, não deverá ser maior que a área total da fazenda'
+          : null,
+      documento: (value) =>
+        isFisicalPerson === 'fisica'
+          ? validateCpf(value)
+            ? null
+            : 'CPF invalido'
+          : validateCnpj(value)
+            ? null
+            : 'CNPJ invalido',
+      nomeFazenda: (value) => (value.length === 0 ? 'O nome da fazenda é obrigatorio' : null),
+      nomeProdutor: (value) => (value.length === 0 ? 'O nome do produtor é obrigatorio' : null),
+      culturasPlantadas: (value) =>
+        value.length === 0 ? 'Deve haver pelo menor 1 selecionada' : null,
+    },
   });
 
   const deleteProdutor = useMutation({
@@ -129,7 +149,11 @@ export const Produtor = () => {
             }}
             columns={columns}
             handleEditar={(user) => {
+              debugger;
               form.setValues(user);
+              if (user.documento.length !== 14) {
+                setIsFisicalPerson('juridica');
+              }
               setOpenModal(true);
             }}
             data={data! ?? []}
@@ -170,7 +194,12 @@ export const Produtor = () => {
 
           <FormBuilder
             form={form}
-            onSubmit={form.onSubmit((values) => addEditProdutor.mutate(values))}
+            onClick={() => {
+              if (form.validate().hasErrors) {
+                return;
+              }
+              addEditProdutor.mutate(form.values);
+            }}
             onCancel={() => {
               setOpenModal(false);
               form.reset();

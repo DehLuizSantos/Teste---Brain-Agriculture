@@ -26,7 +26,7 @@ export const HeaderInfoWrapper = styled.div`
       max-width: 672px;
 
       h1 {
-        font-size: ${theme.sizes.large};
+        font-size: ${theme.sizes.xLarge};
         color: ${theme.colors.blackSec};
         margin-bottom: 15px;
 
