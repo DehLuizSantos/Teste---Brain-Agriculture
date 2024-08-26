@@ -1,6 +1,7 @@
 import { DashboardChartsInfos, DashboardChartsProps } from '@/interfaces/dashboard.interface';
 import produtores, { estadosECidades, nomesFazendas } from './produtor';
 import { theme } from '@/styles/theme';
+import { PieChartCell } from '@mantine/charts';
 
 const dashboardColors = [
   theme.colors.blue,
@@ -35,7 +36,7 @@ const usoSoloData = [
   },
 ];
 /* Calcula o total de heactares por estado */
-const hectaresPorEstado = estados.map((estado, index) => {
+const hectaresPorEstado: any = estados.map((estado, index) => {
   const totalHectares = produtores
     .filter((produtor) => produtor.estado === estado)
     .reduce((acc, produtor) => acc + produtor.totalHectares, 0);
