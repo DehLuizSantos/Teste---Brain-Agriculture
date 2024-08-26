@@ -26,7 +26,7 @@ export const Login = () => {
         message: String(error.response.data.message),
       });
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       notifications.show({
         title: 'Sucesso',
         message: 'Login efetuado com sucesso',
