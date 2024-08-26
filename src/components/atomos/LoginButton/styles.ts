@@ -9,7 +9,7 @@ export const LoginButton = styled.button`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    background-color: ${theme.colors.gray['700']};
+    background-color: ${theme.colors.gray['500']};
     border: none;
     cursor: pointer;
     padding: 5px;
@@ -21,12 +21,14 @@ export const LoginButton = styled.button`
       font-size: ${theme.sizes.small};
 
       h5 {
-        font-weight: 900;
+        font-weight: 400;
         color: ${theme.colors.white};
+        font-size: ${theme.sizes.meddium};
       }
 
       p {
         font-weight: 300;
+        font-family: 'Open Sans', serif;
         color: ${theme.colors.white};
       }
     }

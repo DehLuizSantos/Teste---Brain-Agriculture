@@ -13,6 +13,8 @@ import { FormBuildWrapper } from './styles';
 import { InputCnpj } from '../../atomos/InputCnpj';
 import { Inputcpf } from '../../atomos/InputCpf';
 import { FormButton } from '@/components/moleculas/FormButton';
+import { estadosECidades } from '@/API/produtor';
+import { UseFormReturnType } from '@mantine/form';
 
 export interface Field {
   type: string;
@@ -33,10 +35,15 @@ interface FormBuilderProps {
   fields: Field[];
   onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
   onCancel?: () => void;
-  form: any;
+  form: UseFormReturnType<any>;
 }
 
 const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCancel }) => {
+  const estadosData = Object.keys(estadosECidades);
+
+  // const cidadesPorEstado = estadosECidades![form.values.estado ?? 'SP'];
+  // console.log(cidadesPorEstado)
+
   const mappedFields = fields?.map((field) => {
     const {
       type,
@@ -58,7 +65,6 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCan
           <Select
             key={name}
             data-autofocus={focus}
-            transitionProps={{ duration: 150, transition: 'pop-top-left', timingFunction: 'ease' }}
             label={label}
             data={options}
             placeholder={placeholder}
@@ -74,7 +80,6 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCan
           <Select
             key={name}
             data-autofocus={focus}
-            transitionProps={{ duration: 150, transition: 'pop-top-left', timingFunction: 'ease' }}
             label={label}
             data={options}
             placeholder={placeholder}
@@ -96,7 +101,7 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCan
             data-autofocus={focus}
             ref={ref ? ref : null}
             key={name}
-            onChange={onChange ? onChange : null}
+            // onChange={onChange ? onChange : null}
             maxLength={maxLength}
             placeholder={placeholder}
             label={label}
@@ -140,7 +145,7 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCan
           <Checkbox
             data-autofocus={focus}
             label={label}
-            withAsterisk={required}
+            // withAsterisk={required}
             {...form.getInputProps(name)}
             checked={form.getInputProps(name).value}
           />
@@ -172,6 +177,37 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ fields, form, onSubmit, onCan
       return (
         <Grid.Col span={col} key={name}>
           <Inputcpf form={form} focus={focus} />
+        </Grid.Col>
+      );
+    }
+    if (type === 'estado') {
+      return (
+        <Grid.Col span={col} key={name}>
+          <Select
+            key={name}
+            data-autofocus={focus}
+            label={label}
+            data={estadosData}
+            placeholder={placeholder}
+            {...form.getInputProps(name)}
+            required={required}
+          />
+        </Grid.Col>
+      );
+    }
+    if (type === 'cidade') {
+      return (
+        <Grid.Col span={col} key={name}>
+          <Select
+            key={name}
+            data-autofocus={focus}
+            disabled={form.getInputProps('estado').value.lenght === 0}
+            label={label}
+            data={[]}
+            placeholder={placeholder}
+            {...form.getInputProps(name)}
+            required={required}
+          />
         </Grid.Col>
       );
     }

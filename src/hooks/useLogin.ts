@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { LoginType, ClientType } from '../interfaces/client.interface';
+import { LoginType, ProdutorType } from '../interfaces/produtor.interface';
 import store from 'store2';
 import { useQueryClient } from '@tanstack/react-query';
 
@@ -17,7 +17,7 @@ export const useLogin = () => {
     // store.session.set('adm', res.data.adm);
     store.session.set('email', formData.email);
     store.session.set('id', formData.id);
-    return formData as ClientType;
+    return formData as ProdutorType;
   };
 
   const queryClient = useQueryClient();

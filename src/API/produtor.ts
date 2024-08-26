@@ -1,4 +1,14 @@
 type Culturas = 'Soja' | 'Milho' | 'Algodão' | 'Café' | 'Cana de Açucar';
+type Estados = 'SP' | 'RJ' | 'MG' | 'PR' | 'RS';
+type CidadesPorEstado = Record<Estados, string[]>;
+
+export const estadosECidades: CidadesPorEstado = {
+  SP: ['São Paulo', 'Campinas', 'Santos', 'Ribeirão Preto', 'Sorocaba'],
+  RJ: ['Rio de Janeiro', 'Niterói', 'Petrópolis', 'Volta Redonda', 'Campos dos Goytacazes'],
+  MG: ['Belo Horizonte', 'Uberlândia', 'Contagem', 'Juiz de Fora', 'Montes Claros'],
+  PR: ['Curitiba', 'Londrina', 'Maringá', 'Cascavel', 'Foz do Iguaçu'],
+  RS: ['Porto Alegre', 'Caxias do Sul', 'Pelotas', 'Santa Maria', 'Passo Fundo'],
+};
 
 const nomesProdutores = [
   'Roberto',
@@ -12,7 +22,7 @@ const nomesProdutores = [
   'Ricardo',
   'Paula',
 ];
-const nomesFazendas = [
+export const nomesFazendas = [
   'Fazenda Bela Vista',
   'Fazenda Esperança',
   'Fazenda Santa Maria',
@@ -28,6 +38,14 @@ const culturasDisponiveis: Culturas[] = ['Soja', 'Milho', 'Algodão', 'Café', '
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const estados: Estados[] = Object.keys(estadosECidades) as Estados[];
+
+function getRandomEstadoECidade(): { estado: Estados; cidade: string } {
+  const estado: Estados = estados[getRandomInt(0, estados.length - 1)];
+  const cidades: string[] = estadosECidades[estado];
+  const cidade: string = cidades[getRandomInt(0, cidades.length - 1)];
+  return { estado, cidade };
 }
 
 function getRandomCulturas(): Culturas[] {
@@ -65,6 +83,7 @@ const produtores = Array.from({ length: 81 }, () => {
   const areaAgricultavel = getRandomInt(200, totalHectares);
   const areaVegetacao = totalHectares - areaAgricultavel;
   const produtorId = getRandomInt(1, 1000);
+  const { estado, cidade } = getRandomEstadoECidade();
   const documento = getRandomDocumento();
 
   return {
@@ -76,6 +95,8 @@ const produtores = Array.from({ length: 81 }, () => {
     culturasPlantadas: getRandomCulturas(),
     id: produtorId,
     documento,
+    estado,
+    cidade,
   };
 });
 

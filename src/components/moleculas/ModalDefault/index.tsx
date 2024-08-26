@@ -22,8 +22,9 @@ export const ModalDefault = ({
       opened={opened}
       onClose={onClose}
       size={size}
+      title={title}
       centered
-      transitionProps={{ transition: 'rotate-left' }}
+      transitionProps={{ transition: 'pop-bottom-left', timingFunction: 'ease' }}
       overlayProps={{
         color: theme.colors.gray['500'],
         opacity: 0.55,
@@ -31,7 +32,7 @@ export const ModalDefault = ({
       }}
     >
       <S.ModalWrapper>
-        {title && <TitleModal title={title} />}
+        {/* {title && <TitleModal title={title} />} */}
         {children}
       </S.ModalWrapper>
     </Modal>

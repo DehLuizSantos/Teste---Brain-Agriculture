@@ -3,7 +3,7 @@ import { useForm, zodResolver } from '@mantine/form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { notifications } from '@mantine/notifications';
-import { LoginInitialValues, LoginType, loginSchema } from '../../interfaces/client.interface';
+import { LoginInitialValues, LoginType, loginSchema } from '../../interfaces/login.interface';
 import * as S from './styles';
 import { useLogin } from '@/hooks/useLogin';
 import FormBuilder from '@/components/organismos/FormBuilder';
@@ -15,7 +15,6 @@ export const Login = () => {
     initialValues: LoginInitialValues,
     validate: zodResolver(loginSchema),
   });
-  const queryClient = useQueryClient();
 
   const postLogin = useMutation({
     mutationFn: (data: LoginType) => handleLogin(data),
@@ -27,8 +26,7 @@ export const Login = () => {
         message: String(error.response.data.message),
       });
     },
-    onSuccess: (data) => {
-      queryClient.setQueryData(['userData'], data);
+    onSuccess: () => {
       notifications.show({
         title: 'Sucesso',
         message: 'Login efetuado com sucesso',

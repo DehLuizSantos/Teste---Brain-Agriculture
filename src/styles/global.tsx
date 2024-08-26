@@ -11,19 +11,19 @@ export const GlobalStyles = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6, p  {
     margin: 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Fira Sans', sans-serif;
   }
 
   h1{
-    font: bold ${theme.sizes.large} "Open Sans", sans-serif;
+    font: bold ${theme.sizes.large} 'Fira Sans', sans-serif;
   }
 
   h3{
-    font: 500 ${theme.sizes.meddium} "Open Sans", sans-serif;
+    font: 500 ${theme.sizes.meddium} 'Fira Sans', sans-serif;
   }
 
   p{
-    font: 400 ${theme.sizes.meddium} "Open Sans", sans-serif;
+    font: 400 ${theme.sizes.meddium} 'Fira Sans', sans-serif;
   } 
 
   a {
