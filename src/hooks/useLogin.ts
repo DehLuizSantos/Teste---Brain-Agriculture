@@ -8,7 +8,7 @@ export const useLogin = () => {
 
   const handleLogin = async (form: LoginType) => {
     const formData = {
-      nome: 'exemplo',
+      nome: 'Admin',
       email: form.login,
       id: 1,
     };

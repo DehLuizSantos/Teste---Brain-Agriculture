@@ -143,13 +143,14 @@ export const Produtor = () => {
             form.setValues(user);
           }}
           handleDoubleClick={(user) => {
-            user.senha = null;
             form.setValues(user);
+            if (user.documento.length !== 14) {
+              setIsFisicalPerson('juridica');
+            }
             setOpenModal(true);
           }}
           columns={columns}
           handleEditar={(user) => {
-            debugger;
             form.setValues(user);
             if (user.documento.length !== 14) {
               setIsFisicalPerson('juridica');

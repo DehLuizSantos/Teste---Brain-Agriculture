@@ -29,7 +29,7 @@
 
 👀 Demo Website
 
-👉 demo: https://desafio-cart-sys-junior-git-develop-dehluizsantos07.vercel.app/
+👉 demo: https://brain-agriculture-debj.vercel.app/produtor
 
 <h2>IMPORTANT</h2>
 <p>
@@ -68,6 +68,8 @@ npm run storybook - start documentation with storybook
 ````
 
 Open [http://localhost:5173/](http://localhost:5173/) with your browser to see the result.
+
+For login, enter any valid email and a password with more than 4 characters.
 <br>
 
 Made with love by [André Luiz Santos](https://github.com/DehLuizSantos) 🚀
