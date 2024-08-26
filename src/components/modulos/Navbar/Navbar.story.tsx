@@ -4,7 +4,7 @@ import Navbar, { NavbarType } from '.';
 import { LinksDinamicosMock } from './mocks';
 
 export default {
-  title: 'Components/modules/Navbar',
+  title: 'Navbar',
   component: Navbar,
 } as Meta;
 

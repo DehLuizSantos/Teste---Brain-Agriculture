@@ -1,4 +1,3 @@
-import produtores from '@/API/produtor';
 import { FadingComponent } from '@/components/atomos/FadeAnimation';
 import { Loading } from '@/components/atomos/Loading';
 import { ModalDefault } from '@/components/moleculas/ModalDefault';
@@ -13,10 +12,11 @@ import { useForm, UseFormReturnType, zodResolver } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { MRT_ColumnDef } from 'mantine-react-table';
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useStore } from 'zustand';
 import { formBuildPropsFisical, formBuildPropsJuridical } from './constants';
 import { validateCnpj, validateCpf } from '@/utils/validates';
+import PageHeader from '@/components/moleculas/PageHeader';
 
 export const Produtor = () => {
   const { handleGetAllProdutores, handleDeleteProdutor, handlePostProdutor, handlePutProdutor } =
@@ -73,6 +73,10 @@ export const Produtor = () => {
     queryKey: ['produtores'],
     queryFn: () => handleGetAllProdutores(),
   });
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const form = useForm<ProdutorType>({
     mode: 'controlled',
@@ -131,39 +135,37 @@ export const Produtor = () => {
   });
 
   return (
-    <div>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <FadingComponent duration={500}>
-          <Table<ProdutorType>
-            loading={loading}
-            handleDeleteItem={(user) => {
-              setOpenModalDelete(true);
-              form.setValues(user);
-            }}
-            handleDoubleClick={(user) => {
-              user.senha = null;
-              form.setValues(user);
-              setOpenModal(true);
-            }}
-            columns={columns}
-            handleEditar={(user) => {
-              debugger;
-              form.setValues(user);
-              if (user.documento.length !== 14) {
-                setIsFisicalPerson('juridica');
-              }
-              setOpenModal(true);
-            }}
-            data={data! ?? []}
-            handleAddTable={() => {
-              form.setValues(produtoresInitialValues);
-              setOpenModal(true);
-            }}
-          />
-        </FadingComponent>
-      )}
+    <>
+      <FadingComponent duration={100}>
+        <PageHeader info="Adicione, edite ou delete produtores" title="Produtor" />
+
+        <Table<ProdutorType>
+          loading={loading}
+          handleDeleteItem={(user) => {
+            setOpenModalDelete(true);
+            form.setValues(user);
+          }}
+          handleDoubleClick={(user) => {
+            user.senha = null;
+            form.setValues(user);
+            setOpenModal(true);
+          }}
+          columns={columns}
+          handleEditar={(user) => {
+            debugger;
+            form.setValues(user);
+            if (user.documento.length !== 14) {
+              setIsFisicalPerson('juridica');
+            }
+            setOpenModal(true);
+          }}
+          data={data! ?? []}
+          handleAddTable={() => {
+            form.setValues(produtoresInitialValues);
+            setOpenModal(true);
+          }}
+        />
+      </FadingComponent>
 
       <ModalDefault
         title={form.values.id ? 'Editar produtor' : 'Adicionar produtor'}
@@ -215,6 +217,6 @@ export const Produtor = () => {
         opened={openModalDelete}
         description={`Tem certeza que deseja deletar o produtor ${form.values.nomeProdutor}?`}
       />
-    </div>
+    </>
   );
 };

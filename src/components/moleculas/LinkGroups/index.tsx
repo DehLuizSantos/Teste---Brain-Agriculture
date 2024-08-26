@@ -1,8 +1,7 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import * as S from './styles';
 import LinkNavbar from '@/components/atomos/LinkNavbar';
-import { FadingComponent } from '@/components/atomos/FadeAnimation';
-import { IconType } from 'react-icons';
+import { useLocation } from 'react-router-dom';
 
 export interface LinksProps {
   label: string;
@@ -17,7 +16,10 @@ interface GrupoDeLinksProps {
 }
 
 const GrupoDeLinks = ({ links, isNavHover }: GrupoDeLinksProps) => {
-  const [selected, setSelected] = useState(links![0].label ?? '');
+  const location = useLocation();
+  const [selected, setSelected] = useState(
+    location.pathname === '/produtor' ? 'Produtor' : 'Dashboard'
+  );
 
   const LinkToRender = links?.map((item) => (
     <S.LinkActive
@@ -30,11 +32,7 @@ const GrupoDeLinks = ({ links, isNavHover }: GrupoDeLinksProps) => {
     </S.LinkActive>
   ));
 
-  return (
-    <S.LinkGroupWrapper>
-      <FadingComponent duration={500}>{LinkToRender}</FadingComponent>
-    </S.LinkGroupWrapper>
-  );
+  return <S.LinkGroupWrapper>{LinkToRender}</S.LinkGroupWrapper>;
 };
 
 export default memo(GrupoDeLinks);

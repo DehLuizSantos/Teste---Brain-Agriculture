@@ -23,7 +23,7 @@ const customRender = (ui: React.ReactElement, options?: CustomRenderOptions): Re
     <QueryClientProvider client={queryClient}>
       <MantineProvider>
         <ThemeProvider theme={theme}>
-          <BrowserRouter>{children} </BrowserRouter>
+          <BrowserRouter>{children}</BrowserRouter>
         </ThemeProvider>
       </MantineProvider>
     </QueryClientProvider>

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import IconeBotao from '.';
-import IconButton from '../IconButton';
 import { FaBeer } from 'react-icons/fa';
 
 const meta: Meta<typeof IconeBotao> = {
   component: IconeBotao,
+  title: 'IconeBotao',
   argTypes: {
     tipo: {
       control: 'radio',
@@ -25,6 +25,6 @@ export const Primary: Story = {
   args: {
     tipo: 'round',
     children: <FaBeer />,
-    size: '',
+    size: 'md',
   },
 };

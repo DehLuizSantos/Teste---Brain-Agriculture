@@ -13,7 +13,10 @@ export const Login = () => {
   const navigate = useNavigate();
   const form = useForm<LoginType>({
     initialValues: LoginInitialValues,
-    validate: zodResolver(loginSchema),
+    validate: {
+      login: (value) => (/^\S+@\S+$/.test(value) ? null : 'Email Invalido'),
+      senha: (value) => (value.length < 4 ? 'A senha deve ter ao menos 4 digitos' : null),
+    },
   });
 
   const postLogin = useMutation({
@@ -39,10 +42,15 @@ export const Login = () => {
     <>
       <S.LoginWrapper>
         <div className="login">
-          <Title>Desafio CartSys</Title>
+          <Title>Brain Agriculture</Title>
           <Paper p={40} mt={10} withBorder shadow="md" radius="5px">
             <FormBuilder
-              onSubmit={form.onSubmit((values) => postLogin.mutate(values))}
+              onClick={() => {
+                if (form.validate().hasErrors) {
+                  return;
+                }
+                postLogin.mutate(form.values);
+              }}
               form={form}
               fields={[
                 {

@@ -1,4 +1,5 @@
 import { Field } from '@/components/organismos/FormBuilder';
+import { ProdutorType } from '@/interfaces/produtor.interface';
 
 export const formBuildPropsFisical: Field[] = [
   { col: 12, label: 'Cpf', name: 'documento', type: 'cpf', focus: true },

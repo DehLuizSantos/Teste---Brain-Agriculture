@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Shell } from '../Shell';
-import { useLocation } from 'react-router-dom';
 import { useStore } from 'zustand';
 import { useLayoutCreator } from '@/store/layout/use-Layout-store';
 import { PiPlantLight } from 'react-icons/pi';
@@ -8,17 +7,7 @@ import { VscDashboard } from 'react-icons/vsc';
 
 const Container = ({ children }: any) => {
   const navbarRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
   const { isNavbarHover, setIsNavHover } = useStore(useLayoutCreator);
-
-  const changeModulosByLocation = useCallback((path: string) => {
-    const pathFormated = path.replace('/', '');
-    const modulos: any = {
-      dashboard: 'Dashboard',
-      produtor: 'Produtor',
-    };
-    return modulos[pathFormated];
-  }, []);
 
   useEffect(() => {
     const handleMouseEnter = () => {
@@ -41,7 +30,7 @@ const Container = ({ children }: any) => {
         navbarRefCurrent.addEventListener('mouseleave', handleMouseLeave);
       }
     };
-  }, [location.pathname]);
+  }, []);
 
   return (
     <Shell
@@ -50,7 +39,6 @@ const Container = ({ children }: any) => {
         { icon: <VscDashboard />, label: 'Dashboard', to: '/dashboard' },
         { icon: <PiPlantLight />, label: 'Produtor', to: '/produtor' },
       ]}
-      modulo={changeModulosByLocation(location.pathname)}
       navbarRef={navbarRef}
     >
       {children}{' '}

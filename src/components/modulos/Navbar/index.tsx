@@ -9,10 +9,9 @@ import Logo from '../../../assets/LogoBA';
 
 export type NavbarType = {
   isHover: boolean;
-  modulo: string;
   links?: LinksProps[];
 };
-const Navbar = ({ isHover, links, modulo }: NavbarType) => {
+const Navbar = ({ isHover, links }: NavbarType) => {
   const LogoHeader = useMemo(() => (isHover ? <Logo /> : <LogoInicial />), [isHover]);
 
   return (

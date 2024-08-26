@@ -5,7 +5,7 @@ import { render } from '@/test/render';
 describe('AppShelCollapsed rendering', () => {
   it('renders without crashing', () => {
     const { getByTestId } = render(
-      <Shell isNavHover={true} modulo="exemplo" links={LinksDinamicosMock}>
+      <Shell isNavHover={true} links={LinksDinamicosMock}>
         <div>Child component</div>
       </Shell>
     );
