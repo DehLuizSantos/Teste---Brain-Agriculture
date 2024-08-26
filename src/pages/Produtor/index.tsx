@@ -21,6 +21,7 @@ import PageHeader from '@/components/moleculas/PageHeader';
 export const Produtor = () => {
   const { handleGetAllProdutores, handleDeleteProdutor, handlePostProdutor, handlePutProdutor } =
     useProdutores();
+
   const { loading } = useStore(useLoadingCreator);
   const [openModal, setOpenModal] = useState(false);
   const [openModalDelete, setOpenModalDelete] = useState(false);
@@ -69,14 +70,10 @@ export const Produtor = () => {
     []
   );
 
-  const { data, isLoading, refetch } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ['produtores'],
     queryFn: () => handleGetAllProdutores(),
   });
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   const form = useForm<ProdutorType>({
     mode: 'controlled',
@@ -136,7 +133,7 @@ export const Produtor = () => {
 
   return (
     <>
-      <FadingComponent duration={100}>
+      <FadingComponent duration={500}>
         <PageHeader info="Adicione, edite ou delete produtores" title="Produtor" />
 
         <Table<ProdutorType>
