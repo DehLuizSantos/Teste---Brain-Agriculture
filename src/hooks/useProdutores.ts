@@ -1,7 +1,3 @@
-import { LoginType, ClientType } from '../interfaces/client.interface';
-import store from 'store2';
-import { useQueryClient } from '@tanstack/react-query';
-import produtores from '@/API/produtor';
 import { useStore } from 'zustand';
 import { useprodutoresStore } from '@/store/produtores/produtores-store-creator';
 import { useLoadingCreator } from '@/store/loading/use-loading-store';

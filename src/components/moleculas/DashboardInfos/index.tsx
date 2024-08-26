@@ -1,23 +1,16 @@
 import { DashboardInfoCard } from '@/components/atomos/DashboardInfoCard';
 import * as S from './styles';
 import { FadingComponent } from '@/components/atomos/FadeAnimation';
+import { DashboardChartsInfos } from '@/interfaces/dashboard.interface';
 
-const DashboardInfos = () => {
-  const infos = [
-    {
-      quantity: 5,
-      title: 'Total de fazendas em quantidade',
-      duration: 100,
-    },
-    {
-      quantity: 50000,
-      title: 'Total de fazendas em hectares',
-      duration: 300,
-    },
-  ];
+type DashboardInfosProps = {
+  dashboardInfos: DashboardChartsInfos;
+};
+
+const DashboardInfos = ({ dashboardInfos }: DashboardInfosProps) => {
   return (
     <S.DashboardInfosWrapper>
-      {infos?.map((info) => (
+      {dashboardInfos?.map((info) => (
         <FadingComponent key={info.duration} duration={info.duration}>
           <DashboardInfoCard {...info} />
         </FadingComponent>

@@ -53,6 +53,14 @@ export const Produtor = () => {
         header: 'Área de vegetação',
       },
       {
+        accessorKey: 'estado',
+        header: 'Estado',
+      },
+      {
+        accessorKey: 'cidade',
+        header: 'Cidade',
+      },
+      {
         accessorKey: 'culturasPlantadas',
         header: 'Culturas Plantadas',
       },
@@ -134,12 +142,11 @@ export const Produtor = () => {
       )}
 
       <ModalDefault
-        title={form.values.id ? 'Editar' : 'Adicionar'}
-        size="md"
+        title={form.values.id ? 'Editar produtor' : 'Adicionar produtor'}
+        size="lg"
         opened={openModal}
         onClose={() => {
           setOpenModal(false);
-          form.reset();
         }}
       >
         <>
