@@ -7,7 +7,7 @@ import Table from '@/components/organismos/Tabela';
 import { useProdutores } from '@/hooks/useProdutores';
 import { produtoresInitialValues, produtoresSchema, ProdutorType } from '@/interfaces/produtores';
 import { useLoadingCreator } from '@/store/loading/use-loading-store';
-import { Group, Radio } from '@mantine/core';
+import { Badge, Group, Radio } from '@mantine/core';
 import { useForm, UseFormReturnType, zodResolver } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -15,8 +15,10 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useMemo, useState } from 'react';
 import { useStore } from 'zustand';
 import { formBuildPropsFisical, formBuildPropsJuridical } from './constants';
-import { validateCnpj, validateCpf } from '@/utils/validates';
+import { removeAllEspetialCaracters, validateCnpj, validateCpf } from '@/utils/validates';
 import PageHeader from '@/components/moleculas/PageHeader';
+import { CuturasWrapper } from './styles';
+import HoverPopUp from '@/components/atomos/HoverPopUp';
 
 export const Produtor = () => {
   const { handleGetAllProdutores, handleDeleteProdutor, handlePostProdutor, handlePutProdutor } =
@@ -65,6 +67,17 @@ export const Produtor = () => {
       {
         accessorKey: 'culturasPlantadas',
         header: 'Culturas Plantadas',
+        Cell: ({ row }) => {
+          return (
+            <CuturasWrapper>
+              {row.original.culturasPlantadas?.map!((cell: string, index: number) => (
+                <HoverPopUp key={index} texto={cell}>
+                  <Badge color={'blue'}>{cell}</Badge>
+                </HoverPopUp>
+              ))}
+            </CuturasWrapper>
+          );
+        },
       },
     ],
     []
@@ -144,17 +157,23 @@ export const Produtor = () => {
           }}
           handleDoubleClick={(user) => {
             form.setValues(user);
-            if (user.documento.length !== 14) {
+
+            if (removeAllEspetialCaracters(user.documento).length !== 11) {
               setIsFisicalPerson('juridica');
+            } else {
+              setIsFisicalPerson('fisica');
             }
             setOpenModal(true);
           }}
           columns={columns}
           handleEditar={(user) => {
             form.setValues(user);
-            if (user.documento.length !== 14) {
+            if (removeAllEspetialCaracters(user.documento).length !== 11) {
               setIsFisicalPerson('juridica');
+            } else {
+              setIsFisicalPerson('fisica');
             }
+
             setOpenModal(true);
           }}
           data={data! ?? []}

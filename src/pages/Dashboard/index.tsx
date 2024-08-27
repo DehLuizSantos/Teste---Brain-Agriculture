@@ -3,21 +3,17 @@ import { DashboardCharts } from '@/components/moleculas/DashboardCharts';
 import DashboardInfos from '@/components/moleculas/DashboardInfos';
 import { useDashboard } from '@/hooks/useDashboard';
 import { useQuery } from '@tanstack/react-query';
-import { LogoutButton } from '@/components/atomos/LoginButton';
-import TitlePage from '@/components/atomos/TitlePage';
 import * as S from './styles';
 import PageHeader from '@/components/moleculas/PageHeader';
+import DashboardData from '@/API/dashboardVinc';
 
 export const Dashboard = () => {
+  const { dashboardInfos, dashboardPieInfos } = DashboardData();
   const { handleGetDashboardInfos } = useDashboard();
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['dashboard'],
     queryFn: () => handleGetDashboardInfos(),
   });
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <S.DashboardWrapper>

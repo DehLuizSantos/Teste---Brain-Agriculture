@@ -1,4 +1,3 @@
-import { validateCnpj, validateCpf } from '@/utils/validates';
 import z from 'zod';
 
 type Culturas = 'Soja' | 'Milho' | 'Algodão' | 'Café' | 'Cana de Açucar';
@@ -23,6 +22,8 @@ export const produtoresSchema = z.object({
   areaAgricultavel: z.number().min(0, { message: 'Área agricultável deve ser maior ou igual a 0' }),
   areaVegetacao: z.number().min(0, { message: 'Área de vegetação deve ser maior ou igual a 0' }),
   culturasPlantadas: z.array(z.enum(['Soja', 'Milho', 'Algodão', 'Café', 'Cana de Açucar'])),
+  estado: z.string(),
+  cidade: z.string(),
 });
 
 export type ProdutorType = z.infer<typeof produtoresSchema>;
