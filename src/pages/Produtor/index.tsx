@@ -90,7 +90,7 @@ export const Produtor = () => {
 
   const form = useForm<ProdutorType>({
     mode: 'controlled',
-    initialValues: produtoresInitialValues,
+    initialValues: produtoresInitialValues!,
     validate: {
       areaAgricultavel: (value) => (value === 0 ? 'O valor não pode ser 0' : null),
       areaVegetacao: (value) => (value === 0 ? 'O valor não pode ser 0' : null),

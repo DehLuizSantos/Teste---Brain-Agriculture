@@ -10,6 +10,8 @@ export const produtoresInitialValues = {
   areaAgricultavel: 0,
   areaVegetacao: 0,
   culturasPlantadas: [] as Culturas[],
+  estado: 'SP',
+  cidade: 'São Paulo',
   id: null,
 };
 
